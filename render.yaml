@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: flask-spam-classifier  # Change this to your app name
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+    startCommand: |
+      gunicorn app:app  # Assuming your main Flask file is named "app.py"
+    plan: free
+    region: oregon  # Change based on your location
+    envVars:
+      - key: PORT
+        value: 8080
